@@ -1,0 +1,3575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NUSTECH Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg-2: #0d1d34;
+            --card: rgba(255, 255, 255, 0.06);
+            --line: rgba(255, 255, 255, 0.12);
+            --gold: #d7a629;
+            --gold-soft: #f2cf6a;
+            --blue: #1a74ff;
+            --blue-soft: #55b6ff;
+            --text: #eef4ff;
+            --muted: #b3c0d8;
+            --success: #13c296;
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+            --radius: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(26, 116, 255, 0.18), transparent 28%),
+                radial-gradient(circle at 85% 12%, rgba(215, 166, 41, 0.12), transparent 22%),
+                linear-gradient(180deg, #040a14 0%, var(--bg) 38%, #050b15 100%);
+            color: var(--text);
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(12px);
+            background: rgba(4, 10, 20, 0.72);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-logo {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(135deg, #0b1930, #143154);
+            padding: 4px;
+        }
+
+        .brand-text {
+            line-height: 1.05;
+        }
+
+        .brand-text strong {
+            display: block;
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+        }
+
+        .brand-text span {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.96rem;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 999px;
+            padding: 14px 22px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.25s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+            color: #091220;
+            box-shadow: 0 16px 40px rgba(215, 166, 41, 0.22);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+            color: white;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 999px;
+            color: var(--gold-soft);
+            font-weight: 700;
+            font-size: 0.86rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+
+        /*
+
+        .hero {
+            padding: 62px 0 38px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 999px;
+            color: var(--gold-soft);
+            font-weight: 700;
+            font-size: 0.86rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 18px 0 14px;
+            font-size: clamp(2.45rem, 4.6vw, 5rem);
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(90deg, var(--gold-soft), #fff 50%, var(--blue-soft));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.75;
+            max-width: 720px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 26px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .stat {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.035));
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .hero-card {
+            position: relative;
+            border-radius: 32px;
+            padding: 18px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: -30% auto auto -12%;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(85, 182, 255, 0.22), transparent 68%);
+            pointer-events: none;
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -10% -14% auto;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(215, 166, 41, 0.17), transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-logo-frame {
+            position: relative;
+            min-height: 560px;
+            border-radius: 26px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(180deg, rgba(8, 19, 37, 0.86), rgba(6, 13, 24, 0.96));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .hero-logo-frame img {
+            width: 100%;
+            max-width: 560px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 26px 56px rgba(0, 0, 0, 0.45));
+        }
+
+        .logo-note {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        */
+
+        /* ===== BASE DARK THEME (from your old hero) ===== */
+        :root {
+            --bg: #07111f;
+            --bg-2: #0d1d34;
+            --card: rgba(255, 255, 255, 0.06);
+            --line: rgba(255, 255, 255, 0.12);
+            --gold: #d7a629;
+            --gold-soft: #f2cf6a;
+            --blue: #1a74ff;
+            --blue-soft: #55b6ff;
+            --text: #eef4ff;
+            --muted: #b3c0d8;
+            --success: #13c296;
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+            --radius: 24px;
+        }
+
+        body {
+            background: var(--bg);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== HERO SECTION (dark theme applied to your new structure) ===== */
+        .hero {
+            padding: 62px 0 38px;
+            width: 100%;
+            background: var(--bg);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 34px;
+            align-items: center;
+        }
+
+        /* LEFT CARD - dark glassmorphism style */
+        .hero-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 32px 32px 36px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            background: rgba(215, 166, 41, 0.12);
+            color: var(--gold-soft);
+            border: 1px solid rgba(215, 166, 41, 0.3);
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            gap: 4px;
+            margin-bottom: 1.2rem;
+        }
+
+        .tag i {
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, var(--gold-soft), #fff 50%, var(--blue-soft));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            padding: 0 0.1rem;
+        }
+
+        .lead {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* hero points grid */
+        .hero-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 24px 0 20px;
+        }
+
+        .point {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 12px 14px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .point-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 30px;
+            background: rgba(215, 166, 41, 0.2);
+            color: var(--gold-soft);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .point:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            transform: translateX(3px);
+        }
+
+        /* buttons row */
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 26px 0 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 28px;
+            min-height: 52px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #111827;
+            box-shadow: 0 8px 18px -8px rgba(215, 166, 41, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #e0a200;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 22px -10px rgba(215, 166, 41, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold-soft);
+            border-color: var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(215, 166, 41, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 16px 8px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--gold-soft);
+            margin-bottom: 6px;
+        }
+
+        .stat-box span {
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        /* RIGHT SIDE - dark gradient visual */
+        .hero-visual {
+            background: linear-gradient(135deg, #0a1a2f, #071320);
+            border-radius: 32px;
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid var(--line);
+        }
+
+        .hero-visual::before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(85, 182, 255, 0.12), transparent 70%);
+            top: -80px;
+            right: -80px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(215, 166, 41, 0.1), transparent 70%);
+            bottom: -50px;
+            left: -50px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .course-preview {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 26px 22px;
+        }
+
+        .course-preview .tag {
+            background: rgba(215, 166, 41, 0.15);
+            border-color: rgba(215, 166, 41, 0.4);
+            color: var(--gold-soft);
+            margin-bottom: 12px;
+        }
+
+        .course-preview h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 16px 0 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .course-preview p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .play-box {
+            aspect-ratio: 16 / 10;
+            border-radius: 24px;
+            background-image: url('https://www.nustechnologies.com/assets/images/resources/about-five-img-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 12px 0 22px;
+            border: 1px solid var(--line);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .play-box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            transition: background 0.2s;
+        }
+
+        .play-button {
+            width: 72px;
+            height: 72px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #1e1e1e;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .play-button:hover {
+            transform: scale(1.08);
+            background: #ffbe2e;
+            box-shadow: 0 18px 30px rgba(215, 166, 41, 0.4);
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            background: rgba(26, 116, 255, 0.15);
+            padding: 12px 14px;
+            border-radius: 60px;
+            justify-content: center;
+            margin-top: 18px;
+            border: 1px solid rgba(26, 116, 255, 0.2);
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--line);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge i {
+            font-size: 0.9rem;
+            color: var(--blue-soft);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .hero-visual {
+                min-height: auto;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 40px 0 32px;
+            }
+
+            .hero-card {
+                padding: 24px 20px;
+            }
+
+            .hero-points {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .btn-row {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .badge-row {
+                flex-direction: column;
+                align-items: center;
+                border-radius: 28px;
+            }
+
+            .course-preview h3 {
+                font-size: 1.5rem;
+            }
+
+            .hero-visual {
+                padding: 24px 18px;
+            }
+        }
+
+        .pill {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        section {
+            padding: 34px 0;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: clamp(1.8rem, 3vw, 3rem);
+            letter-spacing: -0.03em;
+        }
+
+        .section-head p {
+            margin: 0;
+            max-width: 670px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 26px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            display: inline-grid;
+            place-items: center;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(215, 166, 41, 0.18), rgba(85, 182, 255, 0.18));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 14px;
+            font-size: 1.4rem;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.18rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .curriculum {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 20px;
+        }
+
+        .module-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .module {
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            gap: 14px;
+            align-items: start;
+            padding: 16px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .module-num {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+            color: #07111f;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .module h4 {
+            margin: 2px 0 8px;
+            font-size: 1.05rem;
+        }
+
+        .module p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+            font-size: 0.96rem;
+        }
+
+        .proof {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .proof-box {
+            text-align: center;
+            padding: 18px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .proof-box strong {
+            display: block;
+            font-size: 1.55rem;
+            margin-bottom: 8px;
+        }
+
+        .proof-box span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .cta-banner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 32px;
+            padding: 34px;
+            background:
+                radial-gradient(circle at 18% 20%, rgba(85, 182, 255, 0.18), transparent 24%),
+                radial-gradient(circle at 90% 15%, rgba(215, 166, 41, 0.17), transparent 22%),
+                linear-gradient(135deg, rgba(16, 40, 74, 0.95), rgba(7, 14, 24, 0.96));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-banner h3 {
+            margin: 0 0 10px;
+            font-size: clamp(1.9rem, 3.2vw, 3rem);
+            line-height: 1.05;
+        }
+
+        .cta-banner p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            line-height: 1.75;
+            max-width: 720px;
+        }
+
+        footer {
+            padding: 36px 0 28px;
+            background: #0a1b3f;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ccc;
+            text-decoration: none;
+            margin: 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* icon default */
+        .footer-links a i {
+            color: #facc15;
+            transition: all 0.3s ease;
+        }
+
+        /* hover effect */
+        .footer-links a:hover {
+            color: #ffffff;
+            opacity: 0.8;
+            /* text fade */
+            transform: translateX(5px);
+        }
+
+        /* icon hover change */
+        .footer-links a:hover i {
+            color: #f4b400;
+            /* change icon color */
+            opacity: 0.7;
+            /* icon opacity */
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 999;
+            background: #25d366;
+            color: #fff;
+            font-weight: 800;
+            padding: 14px 18px;
+            border-radius: 999px;
+            box-shadow: 0 18px 35px rgba(37, 211, 102, 0.25);
+        }
+
+
+        /* whatsapp button  */
+        .float-btn {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            line-height: 1;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 9999;
+        }
+
+        /* WhatsApp */
+        .whatsapp-btn {
+            background: #25D366;
+            bottom: 50px;
+            right: 20px;
+            animation: pulse-green 2s infinite;
+        }
+
+        /* Call */
+        .call-btn {
+            background: #34b7f1;
+            bottom: 140px;
+            right: 20px;
+            animation: pulse-blue 2s infinite 1s;
+        }
+
+        /* hover (desktop safe) */
+        .float-btn:hover {
+            transform: scale(1.12);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+        }
+
+        /* pulse animations */
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6),
+                    0 8px 24px rgba(0, 0, 0, 0.28);
+            }
+
+            70% {
+                box-shadow: 0 0 0 22px rgba(37, 211, 102, 0),
+                    0 8px 24px rgba(0, 0, 0, 0.28);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0),
+                    0 8px 24px rgba(0, 0, 0, 0.28);
+            }
+        }
+
+        @keyframes pulse-blue {
+            0% {
+                box-shadow: 0 0 0 0 rgba(52, 183, 241, 0.6),
+                    0 8px 24px rgba(0, 0, 0, 0.28);
+            }
+
+            70% {
+                box-shadow: 0 0 0 22px rgba(52, 183, 241, 0),
+                    0 8px 24px rgba(0, 0, 0, 0.28);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(52, 183, 241, 0),
+                    0 8px 24px rgba(0, 0, 0, 0.28);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .float-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 20px;
+            }
+
+            .whatsapp-btn {
+                bottom: 140px;
+            }
+
+            .call-btn {
+                bottom: 82px;
+            }
+        }
+
+        @media (max-width: 980px) {
+
+            .hero-grid,
+            .curriculum {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-3,
+            .proof {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero-logo-frame {
+                min-height: 440px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding-top: 34px;
+            }
+
+            .grid-3,
+            .proof,
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .module {
+                grid-template-columns: 54px 1fr;
+            }
+
+            .module-num {
+                width: 54px;
+                height: 54px;
+            }
+
+            .hero-logo-frame {
+                min-height: 340px;
+            }
+
+            .cta-banner,
+            .card,
+            .stat {
+                border-radius: 22px;
+            }
+
+            .brand-text span {
+                display: none;
+            }
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .brand-logo-img {
+            height: 94px;
+            /* adjust as needed */
+            width: auto;
+        }
+
+
+
+
+
+        /* Hero 2 */
+        /* WRAP */
+        .wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 64px 0 36px;
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            background: #1a1d24;
+            color: #f4ac17;
+            border: 1px solid #2a2f3a;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .2px;
+        }
+
+        /* HEADINGS */
+        /* h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin: 18px 0 12px;
+            max-width: 760px;
+            color: #ffffff;
+        } */
+
+        /* TEXT */
+        .sub {
+            font-size: 18px;
+            color: #a0a4ab;
+            max-width: 780px;
+            margin: 0 0 28px;
+        }
+
+        /* HERO GRID */
+        .hero-grid1 {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 28px;
+            align-items: center;
+        }
+
+        /* COUNTDOWN */
+        .countdown {
+            background: #151922;
+            border: 1px solid #2a2f3a;
+            border-radius: 22px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .5);
+            padding: 26px;
+        }
+
+        /* TIME */
+        .time-row {
+            display: flex;
+            gap: 14px;
+            margin: 18px 0 10px;
+        }
+
+        .time-box {
+            flex: 1;
+            background: #0f1115;
+            border: 1px solid #2a2f3a;
+            border-radius: 16px;
+            text-align: center;
+            padding: 16px 8px;
+        }
+
+        .time-box strong {
+            display: block;
+            font-size: 30px;
+            color: #f4ac17;
+        }
+
+        /* =========================
+   📱 MOBILE RESPONSIVE
+========================= */
+        @media (max-width: 992px) {
+            .hero-grid1 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .countdown {
+                order: -1;
+                /* countdown moves on top */
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .container-fluid1 {
+                padding-inline: 16px;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero-grid1 h1 {
+                font-size: 26px;
+            }
+
+            .sub {
+                font-size: 14px;
+            }
+
+            .time-row {
+                flex-direction: column;
+            }
+
+            .btn-row {
+                flex-direction: column;
+            }
+
+            .btn-row a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .price-strip {
+                flex-direction: column;
+            }
+        }
+
+        /* STRIP */
+        .price-strip {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin: 24px 0;
+        }
+
+        .pill {
+            background: #1a1d24;
+            color: #e4e6eb;
+            border: 1px solid #2a2f3a;
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin: 22px 0 0;
+        }
+
+        /* CARD */
+        .card {
+            background: #151922;
+            border: 1px solid #2a2f3a;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+        }
+
+        .card h2 {
+            margin: 0 0 10px;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        /* LIST */
+        ul {
+            padding-left: 18px;
+            margin: 14px 0;
+        }
+
+        li {
+            margin: 8px 0;
+            color: #e4e6eb;
+        }
+
+        /* OFFER */
+        .offer {
+            border: 2px solid #f4ac17;
+            background: linear-gradient(180deg, #1a1d24 0%, #151922 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* TAG */
+        .tag {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: #f4ac17;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 7px 12px;
+            border-radius: 999px;
+        }
+
+        /* PRICING */
+        .strike {
+            color: #a0a4ab;
+            text-decoration: line-through;
+            font-size: 18px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 800;
+            color: #f4ac17;
+            line-height: 1;
+            margin: 6px 0 6px;
+        }
+
+        /* SMALL TEXT */
+        .small {
+            font-size: 14px;
+            color: #a0a4ab;
+        }
+
+        /* BUTTONS */
+        .btn-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 14px;
+            padding: 15px 24px;
+            font-weight: 700;
+            transition: .2s ease;
+        }
+
+        /* PRIMARY */
+        .btn-primary {
+            background: #f4ac17;
+            color: #fff;
+            box-shadow: 0 12px 24px rgba(255, 102, 0, .25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+        }
+
+        /* SECONDARY */
+        .btn-secondary {
+            border: 1px solid #2a2f3a;
+            color: #e4e6eb;
+            background: #1a1d24;
+        }
+
+        /* PROOF */
+        .proof {
+            margin: 38px 0 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .proof .mini {
+            background: #151922;
+            border: 1px solid #2a2f3a;
+            border-radius: 18px;
+            padding: 18px;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 14px 0 60px;
+        }
+
+        .section h3 {
+            font-size: 32px;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .section p.lead {
+            color: #a0a4ab;
+            max-width: 760px;
+        }
+
+        /* FAQ */
+        .faq {
+            margin-top: 18px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: #151922;
+            border: 1px solid #2a2f3a;
+            border-radius: 18px;
+            padding: 18px 20px;
+        }
+
+        .faq-item strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        /* FOOTER */
+        .footer-note {
+            text-align: center;
+            color: #a0a4ab;
+            font-size: 14px;
+            padding: 26px 0 40px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width:900px) {
+
+            .hero-grid,
+            .grid,
+            .proof {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .price {
+                font-size: 40px;
+            }
+        }
+
+
+        /* Contact us page */
+
+
+
+
+        .lead-wrap {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .lead-copy {
+            padding: 28px;
+        }
+
+        .lead-copy ul {
+            list-style: none;
+            padding: 0;
+            margin: 18px 0 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .lead-form {
+            padding: 28px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .field label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #e4e6eb;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #2a2f3a;
+            border-radius: 14px;
+            font-size: 15px;
+            /* background: white; */
+            outline: none;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: #f4ac17;
+            box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.2);
+        }
+
+        .small {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 10px;
+        }
+
+        .tick {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            background: rgba(22, 163, 74, 0.12);
+            color: #16a34a;
+            display: inline-grid;
+            place-items: center;
+            font-size: 13px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 1024px) {
+            .lead-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /*  FAQ*/
+        .faq {
+            display: grid;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        /* ITEM CARD */
+        .faq-item {
+            position: relative;
+            border-radius: 18px;
+            background: linear-gradient(180deg,
+                    rgba(255, 255, 255, 0.06),
+                    rgba(255, 255, 255, 0.03));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        /* hover lift */
+        .faq-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 166, 0, 0.35);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        /* QUESTION BUTTON */
+        .faq-question {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            letter-spacing: 0.2px;
+        }
+
+        /* subtle question hover glow */
+        .faq-question:hover {
+            color: #ffd27a;
+        }
+
+        /* ARROW */
+        .arrow {
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #f4ac17;
+            border-bottom: 2px solid #f4ac17;
+            transform: rotate(45deg);
+            transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* ACTIVE ARROW */
+        .faq-item.active .arrow {
+            transform: rotate(225deg);
+            border-color: #ffd27a;
+            filter: drop-shadow(0 0 6px rgba(255, 166, 0, 0.6));
+        }
+
+        /* ANSWER */
+        .faq-answer {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            color: #a0a4ab;
+            font-size: 14px;
+            line-height: 1.7;
+            padding: 0 20px;
+            transition: all 0.4s ease;
+        }
+
+        /* OPEN STATE */
+        .faq-item.active {
+            border-color: rgba(255, 166, 0, 0.45);
+            background: linear-gradient(180deg,
+                    rgba(255, 102, 0, 0.08),
+                    rgba(255, 255, 255, 0.03));
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 260px;
+            opacity: 1;
+            padding-bottom: 18px;
+        }
+
+        /* smooth icon alignment fix */
+        .faq-question span {
+            flex-shrink: 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 640px) {
+            .faq-question {
+                font-size: 15px;
+                padding: 16px;
+            }
+
+            .faq-answer {
+                font-size: 13.5px;
+            }
+        }
+
+        .faq-question {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-question::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center,
+                    rgba(255, 166, 0, 0.15),
+                    transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .faq-question:hover::after {
+            opacity: 1;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 28px;
+            padding: 10px 0;
+        }
+
+        .faq-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            margin: 0 0 10px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+
+            /* premium gradient text */
+            background: linear-gradient(90deg, #ffffff, #ffd27a, #f4ac17);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* module */
+        /* ===== GLOBAL SECTION ===== */
+        .section {
+            padding: 60px 0;
+            color: #fff;
+            background: #07111f;
+            font-family: Inter, system-ui, sans-serif;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+        }
+
+        /* ===== HEADER ===== */
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .section-head h2 {
+            font-size: 34px;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .section-head p {
+            margin-top: 10px;
+            max-width: 720px;
+            color: #a0a4ab;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* badge */
+        .badge-box {
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #7dd3fc;
+            background: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.25);
+        }
+
+        /* ===== GRID ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        /* ===== CARD ===== */
+        .module-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .module-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 211, 238, 0.35);
+        }
+
+        /* title */
+        .module-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        /* list */
+        .module-card ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .module-card li {
+            position: relative;
+            padding-left: 18px;
+            margin: 8px 0;
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* bullet */
+        .module-card li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22d3ee;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .section-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-head h2 {
+                font-size: 28px;
+            }
+        }
+
+        /*  */
+        /* =========================
+   CONTAINER FLUID (PRO)
+========================= */
+        .container-fluid {
+            width: 100%;
+            padding-inline: clamp(16px, 4vw, 80px);
+            margin-inline: auto;
+        }
+
+        /* =========================
+   HERO SECTION
+========================= */
+        .hero {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        /* =========================
+   HERO GRID (MAIN LAYOUT)
+========================= */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* LEFT SIDE */
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* RIGHT SIDE */
+        .hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* =========================
+   RESPONSIVE DESIGN
+========================= */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-right {
+                order: -1;
+                /* image comes first on mobile */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container-fluid {
+                padding-inline: 16px;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+        }
+
+
+        .container-fluid1 {
+            width: 100%;
+            padding-inline: clamp(16px, 4vw, 64px);
+            margin-inline: auto;
+        }
+
+
+        .hero-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 0;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 600px) {
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="container-fluid nav-inner">
+            <a class="brand" href="#home">
+                <img class="brand-logo-img" src="logo.png" alt="NUSTECH Academy logo" />
+            </a>
+            <div class="nav-links">
+                <!-- <a href="#about">About</a> -->
+                <a href="#curriculum">Modules</a>
+                <a href="#benefits">Why Us</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+                <a class="btn btn-primary" href="#contact" style="color: #ffffff;">Enroll Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="home">
+
+
+        <section class="hero">
+            <div class="container-fluid hero-grid">
+                <!-- LEFT CARD: main content -->
+                <div class="hero-card">
+                    <div class="eyebrow">Premium Technical Learning Platform</div>
+                    <h1>Become Job-Ready in <span class="highlight">Automotive Wiring Harness</span> in 30–45 Days</h1>
+                    <p class="lead">Beginner-friendly recorded training designed for students, freshers, and working
+                        professionals who want practical automotive industry skills.</p>
+
+                    <div class="hero-points">
+                        <div class="point">
+                            <span class="point-icon">✓</span>
+                            <span>No prior experience required</span>
+                        </div>
+                        <div class="point">
+                            <span class="point-icon">✓</span>
+                            <span>Learn anytime on mobile or laptop</span>
+                        </div>
+                        <div class="point">
+                            <span class="point-icon">✓</span>
+                            <span>Industry-focused practical modules</span>
+                        </div>
+                        <div class="point">
+                            <span class="point-icon">✓</span>
+                            <span>Perfect for automotive & EV jobs</span>
+                        </div>
+                        <div class="point">
+                            <span class="point-icon">✓</span>
+                            <span>Trained and placed more than 800+ Engineers in OEM/MNC</span>
+                        </div>
+                        <div class="point">
+                            <span class="point-icon">✓</span>
+                            <span>Get certification with placement assistance</span>
+                        </div>
+                    </div>
+
+                    <div class="btn-row">
+                        <a href="#" class="btn btn-primary"><i class="fas fa-user-graduate"
+                                style="margin-right:8px;"></i>
+                            Enroll Now</a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-play-circle" style="margin-right:8px;"></i> Watch Free Demo
+                        </a>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat-box">
+                            <strong>Automotive OEM Level</strong>
+                            <span>Industry-focused learning with practical training flow</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>Career Ready</strong>
+                            <span>Industry-focused learning with practical training flow</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>Premium Brand</strong>
+                            <span>Industry-focused learning with practical training flow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT VISUAL: preview card -->
+                <div class="hero-visual">
+                    <div class="course-preview">
+                        <span class="tag"
+                            style="background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.25);">
+                            <i class="fas fa-play-circle" style="margin-right:6px; color:#e67e22;"></i>Free Demo
+                            Available
+                        </span>
+                        <h3 style="color:#fff;">Automotive Wiring Harness Pro</h3>
+                        <p style="color: rgba(255,255,255,0.88);">Automotive wiring harness training designed to help
+                            learners build practical skills through flexible, recorded lessons.</p>
+
+                        <div class="play-box">
+                            <div class="play-button">▶</div>
+                        </div>
+
+                        <div class="badge-row" style="background:#214993; padding:10px; border-radius:60px;">
+                            <span class="badge">
+                                <i class="fas fa-video"></i> Recorded Videos
+                            </span>
+                            <span class="badge">
+                                <i class="fas fa-tools"></i> Practical Modules
+                            </span>
+                            <span class="badge">
+                                <i class="fas fa-infinity"></i> Lifetime Access
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">Premium Technical Learning Platform</div>
+                    <h1>Build a <span class="hero-highlight">career-ready future</span> with NUSTECH Academy.</h1>
+                    <p>
+                        A premium dark-theme landing page designed around your new logo, focused on trust, authority,
+                        and strong course conversion. This structure is ideal for your automotive wiring harness course,
+                        engineering skill programs, and future technical training offers.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" id="enroll" href="#cta">Join the Launch</a>
+                        <a class="btn btn-secondary" href="#curriculum">Explore Curriculum</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <strong>OEM-Level</strong>
+                            <span>Industry-focused learning with practical training flow</span>
+                        </div>
+                        <div class="stat">
+                            <strong>Career Ready</strong>
+                            <span>Content built for job seekers, students, and engineers</span>
+                        </div>
+                        <div class="stat">
+                            <strong>Premium Brand</strong>
+                            <span>Gold-blue identity aligned with your final logo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-card">
+                    <div class="hero-logo-frame">
+                        <img src="/mnt/data/a_slick_black_dark_navy_gradient_branding_logo_pos.png"
+                            alt="NUSTECH Academy logo preview"
+                            onerror="this.replaceWith(document.createRange().createContextualFragment('<div style=&quot;text-align:center;padding:30px;&quot;><div style=&quot;font-size:1rem;color:#d7a629;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;&quot;>Logo Preview</div><div style=&quot;font-size:3rem;font-weight:900;line-height:1;color:#fff;&quot;>NUSTECH</div><div style=&quot;font-size:1.5rem;color:#55b6ff;font-weight:700;letter-spacing:.24em;margin-top:10px;&quot;>ACADEMY</div><div style=&quot;margin-top:16px;color:#b3c0d8;&quot;>Skills that Build Career</div></div>'))" />
+                        <div class="logo-note">
+                            <div class="pill">Logo-led premium hero section</div>
+                            <div class="pill">Best for courses, ads, and brand trust</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+
+        <section id="about">
+            <div class="container-fluid1">
+                <div class="section-head">
+                    <div>
+                        <h2>Why NUSTECH Academy is Built Different</h2>
+                    </div>
+                    <p>
+                        NUSTECH Academy is built exclusively for Automotive Wiring Harness education.
+                        Our courses combine practical OEM-level methods with structured online learning,
+                        ensuring students and professionals gain real industry-ready skills.
+                    </p>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <div class="card-icon">🎓</div>
+                        <h3>Specialized Training</h3>
+                        <p>Unlike generic online platforms, NUSTECH focuses solely on wiring harness engineering,
+                            giving learners a clear, niche path to career growth.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">🌐</div>
+                        <h3>Online Learning Advantage</h3>
+                        <p>Flexible, lifetime-access courses designed for students, freshers, and professionals.
+                            Learn at your own pace with structured modules and practical examples.</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">💡</div>
+                        <h3>Career-Oriented Outcomes</h3>
+                        <p>Every module is built to connect directly with industry expectations—helping learners
+                            move from classroom knowledge to confident, job-ready engineers.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Demo Video Section -->
+        <section id="demo" class="container-fluid1">
+            <div style="text-align: center;" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-play-circle"></i> Free Demo</span>
+                <h2 class="section-title">Preview the Course Before You Join</h2>
+                <p class="section-sub"> Master the essentials of automotive wiring harness design with clear, structured
+                    lessons.
+                    Get a real feel for the learning experience before enrolling in NUSTECH Academy.</p>
+            </div>
+            <div class="lead-card" data-aos="zoom-in" style="margin-top: 30px; padding: 20px;">
+                <div style="position:relative; border-radius: 24px; overflow: hidden;">
+                    <video controls width="100%" style="border-radius: 24px;"
+                        poster="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800">
+                        <source
+                            src="https://res.cloudinary.com/weblink/video/upload/v1774870052/wiring_harness_j4omn9.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="curriculum">
+            <div class="container-fluid1 curriculum">
+                <div>
+                    <div class="section-head" style="margin-bottom:18px;">
+                        <div>
+                            <h2>What You'll Learn — Automotive Wiring Harness</h2>
+                        </div>
+                        <p>
+                            From fundamentals to manufacturing-ready skills. A structured learning path designed for
+                            real automotive industry roles.
+                        </p>
+                    </div>
+                    <div class="module-list">
+                        <div class="module">
+                            <div class="module-num"><i class="fas fa-car-side"></i></div>
+                            <div>
+                                <h4>Foundation & Industry Overview</h4>
+                                <p>Understanding wiring harness architecture, OEM–Tier 1 relationships, industry
+                                    structure, and real-world application areas across commercial vehicles, passenger
+                                    cars, and EVs.</p>
+                            </div>
+                        </div>
+                        <div class="module">
+                            <div class="module-num"><i class="fas fa-plug"></i></div>
+                            <div>
+                                <h4>Components & Selection Logic</h4>
+                                <p>Deep dive into wires, connectors, terminals, splices, sleeves, and routing. Learn
+                                    practical selection criteria used by design engineers daily.</p>
+                            </div>
+                        </div>
+                        <div class="module">
+                            <div class="module-num"><i class="fas fa-industry"></i></div>
+                            <div>
+                                <h4>Manufacturing Process & Quality Standards</h4>
+                                <p>Crimping specifications, taping methods, branch layout planning, inspection
+                                    checkpoints, testing procedures, and top defect analysis in harness production.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" style="height:100%;">
+                        <div class="section-head" style="margin-bottom:14px;">
+                            <div>
+                                <h2 style="font-size:clamp(1.5rem,2.7vw,2.4rem);">Who Is This Course For?</h2>
+                            </div>
+                        </div>
+                        <div class="grid-3" style="grid-template-columns:1fr;gap:12px;">
+                            <div class="module" style="background:rgba(255,255,255,0.035);">
+                                <div class="module-num"><i class="fas fa-graduation-cap"></i></div>
+                                <div>
+                                    <h4>Diploma & Engineering Students</h4>
+                                    <p>Bridge the gap between college theory and industry reality.
+                                        Get practical, hands-on skills. A clear career path. Real confidence that you're
+                                        learning what actually works on the job.</p>
+                                </div>
+                            </div>
+                            <div class="module" style="background:rgba(255,255,255,0.035);">
+                                <div class="module-num"><i class="fas fa-briefcase"></i></div>
+                                <div>
+                                    <h4>Job Seekers in Core Automotive Industry</h4>
+                                    <p>Stand out in interviews with skills employers actually want.
+                                        Complete module breakdowns. Premium, structured training. No fluff — just
+                                        industry-ready knowledge.
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="module" style="background:rgba(255,255,255,0.035);">
+                                <div class="module-num"><i class="fas fa-user-cog"></i></div>
+                                <div>
+                                    <h4>Working Engineers</h4>
+                                    <p>Upgrade your expertise with OEM-level process insights.
+                                        Real-world case studies. Professional depth. Concise, relevant training that
+                                        respects your time and experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <!-- Module -->
+        <section id="modules" class="section">
+            <div class="container-fluid1">
+
+                <!-- HEADER -->
+                <div class="section-head">
+                    <div>
+                        <h2>NUSTECH Academy Module 1 — Automotive Wiring Harness Fundamentals </h2>
+                        <p>
+                            This foundation course introduces the essentials of wiring harness engineering. Learners
+                            explore harness
+                            purpose, wire types, terminals, connectors, fuses, relays, clips, grommets, protection
+                            methods, special
+                            cables, splices, and sealing. By the end, you will understand how harnesses are designed,
+                            protected, and
+                            validated at a fundamental level—preparing you for advanced OEM workflows.
+                        </p>
+                    </div>
+
+
+                    <div class="badge-box">
+                        Foundation Level — No Prior Experience Required
+                    </div>
+                </div>
+
+                <!-- MODULE GRID -->
+                <div class="grid-2">
+
+                    <div class="module-card">
+                        <h3>Chapter 1 — Introduction to Wiring Harness</h3>
+                        <ul>
+                            <li>What is wiring harness</li>
+                            <li>Purpose and types of harness</li>
+                            <li>Basic electrical flow</li>
+                            <li>Components overview</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 2 — Automotive Wires & Selection</h3>
+                        <ul>
+                            <li>Wire construction</li>
+                            <li>FLRY, AVSS, TXL/GXL/SXL</li>
+                            <li>Temperature, current & voltage drop selection</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 3 — Terminals</h3>
+                        <ul>
+                            <li>Terminal basics and types</li>
+                            <li>Series concept</li>
+                            <li>Plating and selection criteria</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 4 — Connectors</h3>
+                        <ul>
+                            <li>Sealed, unsealed, hybrid connectors</li>
+                            <li>Connector BOM</li>
+                            <li>TPA / CPA and selection logic</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 5 — Fuses & Electrical Protection</h3>
+                        <ul>
+                            <li>Purpose of fuse</li>
+                            <li>Fuse-wire coordination</li>
+                            <li>Fuse types and OEM validation logic</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 6 — Relays</h3>
+                        <ul>
+                            <li>Relay working principle</li>
+                            <li>NO, NC, changeover relays</li>
+                            <li>Pin configuration and suppression types</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 7 — Clips, Grommets & Brackets</h3>
+                        <ul>
+                            <li>Clip types and barb angle</li>
+                            <li>Grommet types and selection</li>
+                            <li>Bracket purpose and failure modes</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 8 — Harness Covering & Protection</h3>
+                        <ul>
+                            <li>Corrugated tubes, sleeves, HST</li>
+                            <li>Taping methods and tape types</li>
+                            <li>Area-based protection selection</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 9 — Special Cables & Signal Integrity</h3>
+                        <ul>
+                            <li>Twisted and shielded cables</li>
+                            <li>EMI basics</li>
+                            <li>Shielding concepts</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 10 — Splices, BOM & Sealing Systems</h3>
+                        <ul>
+                            <li>Splices and branching logic</li>
+                            <li>BOM fundamentals</li>
+                            <li>Wire seals and dummy plugs</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="modules1" class="section">
+            <div class="container-fluid1">
+
+                <!-- HEADER -->
+                <div class="section-head">
+                    <div>
+                        <h2>NUSTECH Academy - Module 2 (Advanced Level)</h2>
+                        <p>
+                            Complete Wiring Harness Engineering, Validation, Manufacturing & Launch Flow.
+                            This sequence is arranged in practical OEM/Tier-1 order so learners understand how a wiring
+                            harness moves
+                            from design input to release, validation, manufacturing, and vehicle launch.
+                        </p>
+                    </div>
+
+                    <div class="badge-box">
+                        Industry Expert Track
+                    </div>
+                </div>
+
+                <!-- MODULE GRID -->
+                <div class="grid-2">
+
+                    <div class="module-card">
+                        <h3>Chapter 1 — 2D Drawings & Harness Documentation</h3>
+                        <ul>
+                            <li>2D drawing structure: title block, revision block, notes, applicability</li>
+                            <li>Wire chart, component chart, BOM, connector details, branch lengths</li>
+                            <li>Physical representation of schematic and manufacturing input</li>
+                            <li>KBL / VEC basic introduction for digital harness data understanding</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 2 — Wiring Harness Design Process</h3>
+                        <ul>
+                            <li>Customer input, 3D data, load matrix, environmental requirements</li>
+                            <li>Feasibility study: packaging, manufacturing, cost, risk</li>
+                            <li>Circuit design, fuse/relay selection, splice planning</li>
+                            <li>Component selection: connectors, terminals, clips, protection, sealing</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 3 — Wiring Harness 3D Routing</h3>
+                        <ul>
+                            <li>Concept routing in CAD (CATIA / NX / Creo)</li>
+                            <li>Clearance rules, bend radius, fixation strategy, heat zones</li>
+                            <li>Slack management, serviceability, segregation rules</li>
+                            <li>Zone-based routing strategy: engine bay, cabin, chassis, doors/tailgate</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 4 — DFMEA (Design Failure Mode & Effects Analysis)</h3>
+                        <ul>
+                            <li>Identify routing and design risks early</li>
+                            <li>Failure modes: chafing, EMI, heat damage, water ingress, slack issues</li>
+                            <li>Severity, Occurrence, Detection, RPN / AP thinking</li>
+                            <li>Risk controls and linkage to validation planning</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 5 — Fresh Eye Review</h3>
+                        <ul>
+                            <li>Independent review by a team not involved in original design</li>
+                            <li>Used to catch hidden issues missed by the design team</li>
+                            <li>Applied on 3D routing, 2D drawings, packaging and DFMEA</li>
+                            <li>Review checklist, issue list, closure tracking, linkage with ECR / DFMEA</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 6 — Drawing Release Process</h3>
+                        <ul>
+                            <li>3D finalization → 2D drawing preparation → internal check</li>
+                            <li>ECR / ECN incorporation → final drawing and charts</li>
+                            <li>Revision control, CFT review, approvals, PLM release, production release</li>
+                            <li>Phase-wise release linkage: NR, DV, PV, SOP</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 7 — BOD & RQA (Validation Tools for Routing)</h3>
+                        <ul>
+                            <li>BOD: Build of Design for physical validation</li>
+                            <li>RQA: Routing Quality Assessment against OEM requirements</li>
+                            <li>Check routing feasibility, lengths, clip positions, heat protection, bend radius</li>
+                            <li>Outputs feed back into design correction and release quality</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 8 — ECR / ECN Change Management</h3>
+                        <ul>
+                            <li>Engineering Change Request and Engineering Change Notice flow</li>
+                            <li>Impact on 3D, 2D, BOM, costing and timeline</li>
+                            <li>Feasibility, approval, implementation and revision update</li>
+                            <li>DFMEA update and release control after change</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 9 — Special Cables & Modern Vehicle Data Architecture</h3>
+                        <ul>
+                            <li>LVDS, Ethernet, Coax, USB, HDMI, CAN communication basics</li>
+                            <li>Applications in infotainment, ADAS, cameras, RF and user interfaces</li>
+                            <li>Routing, shielding, grounding, connector selection and failure risks</li>
+                            <li>Integration of high-speed data cables in harness design</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 10 — Types of Wiring Harness Projects</h3>
+                        <ul>
+                            <li>Build to Print (BTP), Build to Model (BTM), Full-Service Supplier (FSS)</li>
+                            <li>Design ownership, validation responsibility, risk, profit and customer interaction</li>
+                            <li>Commercial model and supplier evolution</li>
+                            <li>OEM decision logic for selecting project model</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 11 — VAVE in Wiring Harness</h3>
+                        <ul>
+                            <li>Value Analysis / Value Engineering for cost optimization</li>
+                            <li>Wire downsizing, routing optimization, connector consolidation, clip reduction</li>
+                            <li>Protection optimization, modular harnessing, material substitution, process automation
+                            </li>
+                            <li>Validation before implementation and VAVE linkage to ECR</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 12 — Wiring Harness Validations</h3>
+                        <ul>
+                            <li>Splice validation, terminal validation, sealed connector validation, HST validation</li>
+                            <li>Mechanical, electrical, thermal, environmental and durability tests</li>
+                            <li>DVP / DVP&R, acceptance criteria, standards awareness</li>
+                            <li>Validation link with DFMEA and SOP readiness</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 13 — Wiring Harness Manufacturing Process</h3>
+                        <ul>
+                            <li>Raw material preparation, cutting, stripping, crimping, sub-assembly and connector
+                                assembly</li>
+                            <li>Protection application, continuity testing, final inspection and packaging</li>
+                            <li>Process control, PFMEA, defect prevention, traceability</li>
+                            <li>Rework / rejection process and quality feedback loop</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Chapter 14 — Vehicle Launch Plan (OEM Level)</h3>
+                        <ul>
+                            <li>NR → DV → PV → IVER → Non-Saleable → SOP → Saleable</li>
+                            <li>Harness role in each phase and validation gates</li>
+                            <li>Supplier readiness, PPAP, risk management, cost and timeline impact</li>
+                            <li>Launch success metrics and final release discipline</li>
+                            <li>Business, cost, quality and engineering all connected in one lifecycle</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Why choos nus -->
+        <section id="benefits" style="padding:60px 20px; background:#0f1115; font-family:Arial; color:#e4e6eb;">
+            <div style="max-width:1100px; margin:auto; text-align:center;">
+
+                <h2 style="font-size:34px; font-weight:700; margin-bottom:10px; color:#ffffff;">
+                    Why Choose NUSTECH Academy?
+                </h2>
+
+                <p style="font-size:18px; color:#a0a4ab; margin-bottom:40px;">
+                    Not all courses are created equal. Here's what makes us different.
+                </p>
+
+                <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:16px;">
+                        <thead>
+                            <tr style="background:#1a1d24;">
+                                <th style="padding:15px; border:1px solid #2a2f3a;">Features</th>
+                                <th style="padding:15px; border:1px solid #2a2f3a; color:#f4ac17;">NUSTECH Academy</th>
+                                <th style="padding:15px; border:1px solid #2a2f3a;">Other Courses</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">Course Focus</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">✔ Automotive Wiring Harness
+                                    (Specialized)</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a; color:#ff4d4d;">❌ Generic Topics</td>
+                            </tr>
+
+                            <tr style="background:#14171c;">
+                                <td style="padding:12px; border:1px solid #2a2f3a;">Learning Type</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">✔ Practical + Industry-Based</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a; color:#ff4d4d;">❌ Mostly Theory</td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">Industry Exposure</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">✔ Real OEM & Tier-1 Practices</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a; color:#ff4d4d;">❌ Limited or None
+                                </td>
+                            </tr>
+
+                            <tr style="background:#14171c;">
+                                <td style="padding:12px; border:1px solid #2a2f3a;">Career Impact</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">✔ Job-Oriented Skill Development
+                                </td>
+                                <td style="padding:12px; border:1px solid #2a2f3a; color:#ff4d4d;">❌ General Knowledge
+                                    Only</td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">Instructor Experience</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">✔ 40+ Years Industry Expertise</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a; color:#ff4d4d;">❌ Varies (Often
+                                    Limited)</td>
+                            </tr>
+
+                            <tr style="background:#14171c;">
+                                <td style="padding:12px; border:1px solid #2a2f3a;">Student Outcome</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">✔ Become Industry-Ready Engineer
+                                </td>
+                                <td style="padding:12px; border:1px solid #2a2f3a; color:#ff4d4d;">❌ Basic Understanding
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">Value for Money</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a;">✔ High ROI (Career Growth)</td>
+                                <td style="padding:12px; border:1px solid #2a2f3a; color:#ff4d4d;">❌ Low ROI</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top:40px;">
+                    <h3 style="font-size:24px; color:#f4ac17;">
+                        🚀 We Don’t Just Teach — We Build Engineers
+                    </h3>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="pricing" style="
+    padding:60px 20px;
+    background: radial-gradient(circle at top, #0b1628, #050b15);
+    font-family:Arial;
+    color:#eef4ff;
+">
+            <div style="max-width:1100px; margin:auto; text-align:center;">
+
+                <h2 style="font-size:36px; font-weight:700; margin-bottom:10px; color:#fff;">
+                    Choose Your Learning Path 🚀
+                </h2>
+
+                <p style="font-size:18px; color:#aab4c8; margin-bottom:40px;">
+                    Start your career in Automotive Wiring Harness with industry-level training
+                </p>
+
+                <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+
+                    <!-- BASIC -->
+                    <div style="
+          flex:1; min-width:280px;
+          background: rgba(255,255,255,0.05);
+          border:1px solid rgba(255,255,255,0.1);
+          padding:30px;
+          border-radius:16px;
+          backdrop-filter: blur(10px);
+      ">
+                        <h3 style="font-size:24px; color:#fff;">Basic Course</h3>
+                        <p style="color:#9fb0cc;">Perfect for Students & Beginners</p>
+
+                        <h2 style="margin:20px 0;">
+                            <span style="text-decoration:line-through; color:#6b7280;">₹2499</span><br>
+                            <span style="font-size:32px; color:#fff;">₹1999</span>
+                        </h2>
+
+                        <ul style="text-align:left; line-height:2; padding-left:20px; color:#cbd5e1;">
+                            <li>✔ Wiring Harness Fundamentals</li>
+                            <li>✔ Components & Terminology</li>
+                            <li>✔ Basic Design Understanding</li>
+                            <li>✔ Industry Examples</li>
+                            <li>✔ Lifetime Access</li>
+                        </ul>
+
+                        <button style="
+            margin-top:20px;
+            padding:12px 25px;
+            background:#1a74ff;
+            color:#fff;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        ">
+                            Enroll Now
+                        </button>
+                    </div>
+
+                    <!-- COMBO -->
+                    <div style="
+          flex:1; min-width:300px;
+          background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+          border:2px solid #ff6600;
+          padding:30px;
+          border-radius:18px;
+          position:relative;
+          box-shadow:0 20px 40px rgba(0,0,0,0.5);
+      ">
+
+                        <div style="
+            position:absolute;
+            top:-14px;
+            left:50%;
+            transform:translateX(-50%);
+            background:#ff6600;
+            color:#fff;
+            padding:6px 16px;
+            border-radius:20px;
+            font-size:13px;
+        ">
+                            ⭐ Most Popular
+                        </div>
+
+                        <h3 style="font-size:24px; color:#fff;">Full Career Bundle</h3>
+                        <p style="color:#9fb0cc;">Basic + Advanced (Best Value)</p>
+
+                        <h2 style="margin:20px 0;">
+                            <span style="text-decoration:line-through; color:#6b7280;">₹6999</span><br>
+                            <span style="font-size:36px; color:#ff6600;">₹5999</span>
+                        </h2>
+
+                        <ul style="text-align:left; line-height:2; padding-left:20px; color:#e2e8f0;">
+                            <li>✔ Complete Wiring Harness Course</li>
+                            <li>✔ OEM Level Design Process</li>
+                            <li>✔ DFMEA, Testing & Validation</li>
+                            <li>✔ Real Industry Case Studies</li>
+                            <li>✔ Job-Oriented Training</li>
+                            <li>✔ Lifetime Access</li>
+                        </ul>
+
+                        <button style="
+            margin-top:20px;
+            padding:14px 30px;
+            background:#ff6600;
+            color:#fff;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:16px;
+            box-shadow:0 10px 25px rgba(255,102,0,0.3);
+        ">
+                            Get Full Access 🚀
+                        </button>
+                    </div>
+
+                    <!-- ADVANCED -->
+                    <div style="
+          flex:1; min-width:280px;
+          background: rgba(255,255,255,0.05);
+          border:1px solid rgba(255,255,255,0.1);
+          padding:30px;
+          border-radius:16px;
+          backdrop-filter: blur(10px);
+      ">
+                        <h3 style="font-size:24px; color:#fff;">Advanced Course</h3>
+                        <p style="color:#9fb0cc;">For Engineers & Professionals</p>
+
+                        <h2 style="margin:20px 0;">
+                            <span style="text-decoration:line-through; color:#6b7280;">₹6999</span><br>
+                            <span style="font-size:32px; color:#fff;">₹4999</span>
+                        </h2>
+
+                        <ul style="text-align:left; line-height:2; padding-left:20px; color:#cbd5e1;">
+                            <li>✔ OEM Design Workflow</li>
+                            <li>✔ Routing & Packaging</li>
+                            <li>✔ Failure Modes & Quality</li>
+                            <li>✔ Real Project Examples</li>
+                            <li>✔ Lifetime Access</li>
+                        </ul>
+
+                        <button style="
+            margin-top:20px;
+            padding:12px 25px;
+            background:#1a74ff;
+            color:#fff;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        ">
+                            Upgrade Skills
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Contact Us -->
+        <section class="section lead-section" id="contact">
+
+            <!-- <h2 class="container-fluid1" style="font-size:34px; margin:14px 0 12px; line-height:1.15;">
+                Get in Touch
+            </h2> -->
+            <div class="container-fluid1 lead-wrap">
+
+                <div class="card lead-copy">
+                    <span class="pill">Contact Us</span>
+                    <h2 style="font-size:34px; margin:14px 0 12px; line-height:1.15;">
+                        Request Course Details & Pricing Information
+                    </h2>
+                    <p style="margin:0; color:var(--muted); font-size:16px;">
+                        Fill out the form and our team will connect with you to share course information, pricing,
+                        and help you choose the right path in wiring harness engineering.
+                    </p>
+                    <ul>
+                        <li><span class="tick">✓</span><span>Master wiring harness fundamentals, from basics to advanced
+                                concepts</span></li>
+                        <li><span class="tick">✓</span><span>Deepen your understanding of wires, connectors, fuses, and
+                                relays</span></li>
+                        <li><span class="tick">✓</span><span>Build practical skills that prepare you for industry
+                                interviews</span></li>
+                        <li><span class="tick">✓</span><span>Receive expert guidance on career opportunities in
+                                automotive engineering</span>
+                        </li>
+                        <li><span class="tick">✓</span><span>Learn at your own pace, with flexible and self-paced
+                                options</span></li>
+                    </ul>
+                </div>
+
+
+                <div class="card lead-form">
+                    <form id="courseLeadForm">
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="name">Full Name</label>
+                                <input id="name" name="name" type="text" placeholder="Enter your full name" required />
+                            </div>
+                            <div class="field">
+                                <label for="mobile">Mobile Number</label>
+                                <input id="mobile" name="mobile" type="tel" placeholder="Enter your mobile number"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email Address</label>
+                            <input id="email" name="email" type="email" placeholder="Enter your email address"
+                                required />
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="interest">Interested Plan</label>
+                                <select id="interest" name="interest" required>
+                                    <option value="">Select a plan</option>
+                                    <option>Basic Course</option>
+                                    <option>Advanced Course</option>
+                                    <option>Full Career Bundle</option>
+                                    <option>Upgrade from Basic</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="learner">I Am</label>
+                                <select id="learner" name="learner" required>
+                                    <option value="">Select one</option>
+                                    <option>Student</option>
+                                    <option>Working Professional</option>
+                                    <option>Job Seeker</option>
+                                    <option>Business Owner</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4"
+                                placeholder="Tell us what you want to learn or ask us any question"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width:100%;">Request Brochure & Free
+                            Consultation</button>
+                        <div class="small">Great! You’re just one step away from getting the details you requested.
+                            Click 'Submit' and we’ll reach out soon</div>
+                    </form>
+                    <div id="formStatus" class="small" style="margin-top:12px;"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- updagre page two section  -->
+        <!-- <section class="container-fluid1 hero">
+            <div class="wrap hero-grid1">
+                <div>
+                    <span class="badge">Exclusive for Basic Course Learners</span>
+                    <h1>Complete Your Learning Path with the Full Bundle</h1>
+                    <p class="sub">
+                        You have already built the foundation. Now unlock advanced OEM-level concepts, practical
+                        workflow thinking,
+                        and deeper industry knowledge to move from learner to confident professional.
+                    </p>
+
+                    <div class="price-strip">
+                        <span class="pill">Previous Basic payment credited</span>
+                        <span class="pill">Lifetime access</span>
+                        <span class="pill">Career-focused learning path</span>
+                    </div>
+
+                    <div class="btn-row">
+                        <a class="btn btn-primary" href="#upgrade">Upgrade to Full Bundle</a>
+                        <a class="btn btn-secondary" href="#included">See What You Unlock</a>
+                    </div>
+                </div>
+
+                <div class="countdown">
+                    <div class="small"><strong style="color:#166534">Special upgrade window is live</strong></div>
+                    <div class="time-row">
+                        <div class="time-box">
+                            <strong id="hours">48</strong>
+                            <span>Hours</span>
+                        </div>
+
+                        <div class="time-box">
+                            <strong id="minutes">00</strong>
+                            <span>Minutes</span>
+                        </div>
+
+                        <div class="time-box">
+                            <strong id="seconds">00</strong>
+                            <span>Seconds</span>
+                        </div>
+                    </div>
+                    <p class="small">Use a real countdown script when connecting this page to your checkout flow.</p>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- <section class="container-fluid1 section" id="upgrade">
+            <div class="wrap grid">
+                <div class="card">
+                    <h2>What you already have</h2>
+                    <p class="small">Current plan: Basic Course</p>
+                    <ul>
+                        <li>Core wiring harness fundamentals</li>
+                        <li>Terminology, components and basic understanding</li>
+                        <li>Foundation for beginners and freshers</li>
+                        <li>Entry-level learning path</li>
+                    </ul>
+                    <div class="small">A great starting point for students and first-time learners.</div>
+                </div>
+
+                <div class="card offer">
+                    <span class="tag">Best Upgrade Offer</span>
+                    <h2>Unlock the Full Bundle</h2>
+                    <p class="small">Basic + Advanced access in one complete career path</p>
+                    <div class="strike">Advanced value ₹4,999</div>
+                    <div class="price">₹3,499</div>
+                    <div class="small">Limited 48-hour upgrade price after your Basic purchase</div>
+
+                    <ul id="included">
+                        <li>OEM-level design and process understanding</li>
+                        <li>Advanced quality, validation and practical concepts</li>
+                        <li>Deeper project thinking for working professionals</li>
+                        <li>A stronger profile for interviews and career growth</li>
+                        <li>Lifetime access to both course levels</li>
+                    </ul>
+
+                    <div class="btn-row">
+                        <a class="btn btn-primary" href="#">Upgrade to Full Bundle</a>
+                        <a class="btn btn-secondary" href="#">Talk to Support</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap proof">
+                <div class="mini">
+                    <strong>Fair pricing logic</strong>
+                    <p class="small">Your earlier Basic payment is already recognized, so the upgrade feels transparent
+                        and customer-friendly.</p>
+                </div>
+                <div class="mini">
+                    <strong>Premium without confusion</strong>
+                    <p class="small">Direct Combo buyers still receive the strongest value, while Basic buyers get a
+                        clean next step.</p>
+                </div>
+                <div class="mini">
+                    <strong>High-conversion structure</strong>
+                    <p class="small">This page is designed to convert learners when they are already engaged and
+                        motivated.</p>
+                </div>
+            </div>
+        </section> -->
+
+
+
+        <!-- <section>
+            <div class="container-fluid1">
+                <div class="section-head">
+                    <div>
+                        <h2>Trust-building sections for higher conversions</h2>
+                    </div>
+                    <p>
+                        Our programs are designed to build confidence, deliver practical knowledge, and prepare learners
+                        for real automotive industry roles. Every section strengthens trust and shows why NUSTECH
+                        Academy
+                        is the right choice for serious career growth.
+                    </p>
+                </div>
+                <div class="proof">
+                    <div class="proof-box">
+                        <strong>Practical</strong>
+                        <span>Hands-on lessons aligned with OEM and Tier-1 industry practices.</span>
+                    </div>
+                    <div class="proof-box">
+                        <strong>Structured</strong>
+                        <span>Clear module-wise learning path from fundamentals to advanced design.</span>
+                    </div>
+                    <div class="proof-box">
+                        <strong>Career-Focused</strong>
+                        <span>Skills that directly connect with job roles and interview readiness.</span>
+                    </div>
+                    <div class="proof-box">
+                        <strong>Trusted</strong>
+                        <span>Built for students, freshers, and professionals seeking serious growth.</span>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+
+        <div class="container-fluid1 faq" id="faq">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Is this course beginner friendly?
+                    <span class="arrow"></span>
+                </button>
+                <div class="faq-answer">
+                    Yes. The course starts from wiring harness fundamentals and gradually moves toward industry-level
+                    concepts.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Is the course live or recorded?
+                    <span class="arrow"></span>
+                </button>
+                <div class="faq-answer">
+                    The course is pre-recorded so you can learn at your own pace anytime.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Will this help me get a job?
+                    <span class="arrow"></span>
+                </button>
+                <div class="faq-answer">
+                    Yes. The curriculum focuses on practical industry knowledge useful for interviews and job roles.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How will I receive the course access?
+                    <span class="arrow"></span>
+                </button>
+                <div class="faq-answer">
+                    You will receive the access link via WhatsApp or email after successful payment.
+                </div>
+            </div>
+        </div>
+
+
+
+        <section id="cta">
+            <div class="container-fluid1">
+                <div class="cta-banner">
+                    <h3>Ready to Start Your Career in Automotive Wiring Harness Engineering?</h3>
+                    <p>
+                        Join NUSTECH Academy and gain lifetime access to structured, industry-focused courses.
+                        Whether you’re a student, fresher, or working professional, our programs are designed to
+                        take you from fundamentals to OEM-level expertise with practical, career-oriented training.
+                    </p>
+                    <div class="hero-actions" style="margin-top:0;">
+                        <a class="btn btn-primary" href="#pricing">View Course Plans</a>
+                        <a class="btn btn-secondary" href="#contact">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer
+        style="background: radial-gradient(circle at 0% 20%, #0a1022, #070c1a); backdrop-filter: blur(0px); padding: 60px 0 40px; color: #eef2ff; border-top: 4px solid #FC8302; box-shadow: 0 -25px 40px -18px rgba(0, 0, 0, 0.6); margin-top: auto; position: relative; overflow: hidden;">
+
+        <!-- Enhanced Glow Effects for depth -->
+        <div
+            style="position: absolute; top: -100px; right: -80px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(252,131,2,0.2) 0%, rgba(252,131,2,0) 70%); border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(20px);">
+        </div>
+        <div
+            style="position: absolute; bottom: -60px; left: -50px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(252,131,2,0.12) 0%, rgba(10,20,36,0) 75%); border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(15px);">
+        </div>
+        <div
+            style="position: absolute; top: 40%; left: 30%; width: 180px; height: 180px; background: radial-gradient(circle, rgba(0,100,255,0.08) 0%, rgba(0,100,255,0) 70%); border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(18px);">
+        </div>
+
+        <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2;">
+
+            <!-- Footer Grid with improved spacing -->
+            <div style="display: grid; grid-template-columns: 1.6fr 1fr 1.2fr; gap: 56px; align-items: start;">
+
+                <!-- Left Column - Logo & Brand (Enhanced with actual image support + better visibility) -->
+                <div style="display: flex; flex-direction: column; gap: 1.35rem;">
+                    <!-- Logo Container with glassmorphism effect to make transparent logo POP -->
+                    <div
+                        style="display: flex; align-items: center; gap: 14px; background: linear-gradient(135deg, rgba(15, 25, 45, 0.75) 0%, rgba(10, 18, 36, 0.85) 100%); backdrop-filter: blur(8px); border-radius: 28px; padding: 3px 0px 0px 1px; width: fit-content; box-shadow: 0 12px 28px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(252,131,2,0.25), 0 0 0 1px rgba(252,131,2,0.2); transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);">
+                        <!-- Your actual logo image - enhanced with stronger drop shadow and subtle brightness -->
+                        <img src="logo.jpeg" alt="NUSTECH Academy Logo"
+                            style="max-height: 84px; width: auto; object-fit: contain; filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5)) brightness(1.05) contrast(1.02); border-radius: 28px; transition: transform 0.25s ease;">
+
+                    </div>
+
+                    <!-- <span
+                            style="font-weight: 700; font-size: 1.4rem; background: linear-gradient(125deg, #ffffff 25%, #FC8302 85%); background-clip: text; -webkit-background-clip: text; color: transparent; letter-spacing: -0.4px;">NUS<span
+                                style="color: #FC8302; background: none; -webkit-background-clip: unset; font-weight: 700;">
+                                Academy</span></span> -->
+
+                    <!-- Tagline - Skills That Build Careers -->
+                    <div
+                        style="margin-top: 4px; padding: 8px 0 4px 0; border-left: 3px solid #FC8302; padding-left: 16px;">
+                        <p
+                            style="color: #FC8302; font-size: 0.9rem; font-weight: 600; letter-spacing: -0.2px; margin: 0; line-height: 1.3;">
+                            Skills That Build Careers
+                        </p>
+                        <p style="color: #b0c8f0; font-size: 0.8rem; margin: 6px 0 0 0; opacity: 0.8;">
+                            Empowering tomorrow's automotive experts
+                        </p>
+                    </div>
+
+                    <p
+                        style="color: #e2edff; line-height: 1.6; font-size: 0.92rem; max-width: 360px; margin-top: 4px; font-weight: 400; opacity: 0.92;">
+                        Automotive wiring harness training designed to help learners build practical knowledge with
+                        flexible recorded learning.
+                    </p>
+
+                    <!-- Brand accent chips - improved design -->
+                    <div style="display: flex; gap: 14px; margin-top: 8px; flex-wrap: wrap;">
+                        <span
+                            style="background: linear-gradient(135deg, rgba(252,131,2,0.2), rgba(252,131,2,0.08)); padding: 5px 14px; border-radius: 40px; font-size: 0.72rem; color: #FC8302; font-weight: 600; border: 1px solid rgba(252,131,2,0.3); backdrop-filter: blur(2px);"><i
+                                class="fa-regular fa-circle-check" style="margin-right: 6px;"></i> Industry Ready</span>
+                        <span
+                            style="background: rgba(255,255,255,0.06); padding: 5px 14px; border-radius: 40px; font-size: 0.72rem; color: #c5ddff; font-weight: 500; border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(2px);"><i
+                                class="fa-regular fa-clock" style="margin-right: 6px;"></i> Self Paced</span>
+                        <span
+                            style="background: rgba(59,130,246,0.12); padding: 5px 14px; border-radius: 40px; font-size: 0.72rem; color: #90b8ff; font-weight: 500; border: 1px solid rgba(59,130,246,0.2);"><i
+                                class="fa-solid fa-certificate" style="margin-right: 6px;"></i> Certificate</span>
+                    </div>
+                </div>
+
+                <!-- Middle Column - Quick Links (improved spacing + hover effects) -->
+                <div>
+                    <h3
+                        style="color: #ffffff; font-size: 1.32rem; font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.3px; position: relative; display: inline-block; padding-bottom: 8px; border-bottom: 3px solid #FC8302;">
+                        Quick Links</h3>
+                    <div style="margin-top: 18px;">
+                        <a href="#curriculum"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-solid fa-book-open"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            Course Modules
+                        </a>
+                        <a href="#benefits"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-solid fa-star-of-life"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            Why Us
+                        </a>
+                        <a href="#pricing"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-solid fa-tags"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            Pricing
+                        </a>
+                        <a href="#demo"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-solid fa-circle-play"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            Demo Video
+                        </a>
+                        <a href="#faq"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-solid fa-question-circle"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            FAQ
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column - Contact (improved with better organization) -->
+                <div>
+                    <h3
+                        style="color: #ffffff; font-size: 1.32rem; font-weight: 700; margin-bottom: 1.6rem; letter-spacing: -0.3px; position: relative; display: inline-block; padding-bottom: 8px; border-bottom: 3px solid #FC8302;">
+                        Contact</h3>
+                    <div style="margin-top: 18px;">
+                        <a href="https://www.nustechacademy.com" target="_blank"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-solid fa-globe"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            www.nustechacademy.com
+                        </a>
+                        <a href="tel:+919011085544"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-solid fa-phone-alt"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            +91 9011085544
+                        </a>
+                        <a href="mailto:support@nustechacademy.com"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-solid fa-envelope"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            support@nustechacademy.com
+                        </a>
+                        <a target="_blank"
+                            href="https://api.whatsapp.com/send/?phone=919011085544&text=Hello%2C+I+am+interested+in+NUS+Academy&type=phone_number&app_absent=0"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-brands fa-whatsapp"
+                                style="width: 28px; font-size: 1.25rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            WhatsApp Support
+                        </a>
+                        <a href="#"
+                            style="display: flex; align-items: center; gap: 14px; color: #deecff; text-decoration: none; margin: 16px 0; transition: all 0.3s ease; font-size: 0.96rem; font-weight: 470; border-radius: 12px; padding: 6px 0;">
+                            <i class="fa-brands fa-linkedin"
+                                style="width: 28px; font-size: 1.15rem; color: #FC8302; transition: all 0.25s ease;"></i>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar - Enhanced with social icons and better structure -->
+            <div
+                style="margin-top: 58px; padding-top: 32px; border-top: 1px solid rgba(252, 131, 2, 0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <span style="font-size: 0.85rem; color: #b8cef0; letter-spacing: 0.2px;">Copyright © 2026 <span
+                        style="color: #FC8302; text-decoration: none; font-size: 0.85rem; transition: 0.25s; font-weight: 600; cursor: pointer;">NUSTECH
+                        Academy</span>.
+                    All
+                    rights reserved.</span>
+                <div style="display: flex; gap: 32px;">
+                    <a href="#"
+                        style="color: #b8cef0; text-decoration: none; font-size: 0.85rem; transition: 0.25s; font-weight: 450;">Privacy
+                        Policy</a>
+                    <a href="#"
+                        style="color: #b8cef0; text-decoration: none; font-size: 0.85rem; transition: 0.25s; font-weight: 450;">Terms
+                        of Use</a>
+                    <a href="#">Support
+                        Center</a>
+                </div>
+                <!-- Social icons row for modern touch -->
+                <div style="display: flex; gap: 18px;">
+                    <a href="#" style="color: #b0c8f0; font-size: 1.2rem; transition: 0.25s;"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="#" style="color: #b0c8f0; font-size: 1.2rem; transition: 0.25s;"><i
+                            class="fa-brands fa-twitter"></i></a>
+                    <a href="#" style="color: #b0c8f0; font-size: 1.2rem; transition: 0.25s;"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" style="color: #b0c8f0; font-size: 1.2rem; transition: 0.25s;"><i
+                            class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Enhanced hover animations */
+            footer a {
+                transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
+                display: flex;
+                align-items: center;
+            }
+
+            footer a:hover {
+                color: #FC8302 !important;
+                transform: translateX(8px);
+            }
+
+            footer a:hover i {
+                color: #FC8302 !important;
+                transform: scale(1.12) rotate(2deg);
+            }
+
+            footer .logo-container:hover {
+                transform: translateY(-2px);
+                border-color: rgba(252, 131, 2, 0.6);
+                box-shadow: 0 16px 28px -14px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(252, 131, 2, 0.4);
+            }
+
+            footer [style*="background: linear-gradient(135deg, rgba(15, 25, 45, 0.75)"]:hover {
+                transform: translateY(-2px);
+            }
+
+            /* Responsive improvements */
+            @media (max-width: 880px) {
+                footer [style*="grid-template-columns: 1.6fr 1fr 1.2fr"] {
+                    grid-template-columns: 1fr 1fr !important;
+                    gap: 40px !important;
+                }
+            }
+
+            @media (max-width: 620px) {
+                footer [style*="grid-template-columns: 1.6fr 1fr 1.2fr"] {
+                    grid-template-columns: 1fr !important;
+                    text-align: center;
+                }
+
+                footer [style*="display: flex; align-items: center; gap: 14px; background: linear-gradient"] {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                footer a {
+                    justify-content: left;
+                }
+
+                footer [style*="display: flex; justify-content: space-between"] {
+                    flex-direction: column;
+                    text-align: center;
+                    justify-content: center;
+                }
+
+                footer [style*="gap: 32px"] {
+                    justify-content: center;
+                }
+
+                footer .footer-social {
+                    justify-content: center;
+                }
+            }
+
+            /* Smooth scrolling for any anchor */
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
+    </footer>
+
+    <a href="https://wa.me/919011085544?text=Hello%2C%20I%20am%20interested%20in%20NUS%20Academy" target="_blank"
+        target="_blank" class="float-btn whatsapp-btn">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+
+    <a href="tel:+919011085544" class="float-btn call-btn">
+        <i class="fa fa-phone"></i>
+    </a>
+
+
+    <!-- Hero ani banner-->
+    <!-- tiny script to show demo interaction (just to demonstrate play button click, not required but adds micro UX) -->
+    <script>
+        (function () {
+            const playBtn = document.querySelector('.play-button');
+            if (playBtn) {
+                playBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    alert('🎬 Free demo preview: start learning wiring harness fundamentals. (demo placeholder)');
+                });
+            }
+
+            // CTA buttons light feedback (preserve demo)
+            // const enrollBtns = document.querySelectorAll('.btn-primary, .btn-secondary');
+            // enrollBtns.forEach(btn => {
+            //     btn.addEventListener('click', (e) => {
+            //         if (btn.classList.contains('btn-primary') && btn.innerText.includes('Enroll')) {
+            //             e.preventDefault();
+            //             alert('🚀 Enrollment page: secure your spot with lifetime access & bonus materials.');
+            //         } else if (btn.innerText.includes('Demo')) {
+            //             e.preventDefault();
+            //             alert('🎥 Watch free demo: practical wiring harness training preview.');
+            //         }
+            //     });
+            // });
+        })();
+    </script>
+
+    <!-- demo vidoe -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS with custom settings - matches original flip-up but with offset & duration
+        AOS.init({
+            once: true,      // animation only once
+            offset: 80,
+            duration: 700,
+            easing: 'ease-out-cubic',
+        });
+
+        // Additional micro-interaction: add hover effect on price box and bonus
+        document.querySelectorAll('.bonus-animated, .floating-icon').forEach(el => {
+            el.addEventListener('mouseenter', function (e) {
+                if (this.classList.contains('bonus-animated')) {
+                    this.style.transform = 'translateY(-4px)';
+                    this.style.boxShadow = '0 12px 20px -8px rgba(0,0,0,0.2)';
+                } else {
+                    this.style.transform = 'translateX(5px)';
+                }
+            });
+            el.addEventListener('mouseleave', function (e) {
+                if (this.classList.contains('bonus-animated')) {
+                    this.style.transform = 'translateY(0px)';
+                    this.style.boxShadow = 'none';
+                } else {
+                    this.style.transform = 'translateX(0px)';
+                }
+            });
+        });
+
+        // optional: simulate countdown effect? not requested but to add live urgency text (just decorative)
+        // we can add a tiny dynamic timer inside urgent badge? not needed but adds life: but ensure not to conflict.
+        // But to respect exactly the given content but enhance interaction: add dynamic message that updates "48 hours" but keep original copy.
+        // Just to make urgency more lively, we can update the text to show hours remaining (extra polish without breaking design)
+        function updateUrgencyTimer() {
+            const targetDate = new Date();
+            targetDate.setHours(targetDate.getHours() + 48); // 48 hours from now
+            const timerElement = document.querySelector('.urgent-badge');
+            if (timerElement && !timerElement.hasAttribute('data-timer-set')) {
+                timerElement.setAttribute('data-timer-set', 'true');
+                const update = () => {
+                    const now = new Date();
+                    const diff = targetDate - now;
+                    if (diff <= 0) {
+                        if (timerElement) timerElement.innerHTML = '<i class="fas fa-hourglass-end"></i> FINAL HOURS – PRICE HIKE NOW';
+                        return;
+                    }
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (3600000)) / 60000);
+                    if (timerElement && hours <= 48) {
+                        // subtle: don't override entire flash sale copy, just add remainder in a small span
+                        let existingHtml = timerElement.innerHTML;
+                        if (!existingHtml.includes('⏱️')) {
+                            timerElement.innerHTML = `<i class="fas fa-hourglass-half"></i> Limited Offer `;
+                        } else {
+                            timerElement.innerHTML = `<i class="fas fa-hourglass-half"></i> Limited Offer `;
+                        }
+                    }
+                };
+                update();
+                setInterval(update, 60000);
+            }
+        }
+        updateUrgencyTimer();
+
+        // Additional ripple effect on enroll button (just for fun, not intrusive)
+        // const enrollBtn = document.querySelector('.btn-primary');
+        // if (enrollBtn) {
+        //     enrollBtn.addEventListener('click', (e) => {
+        //         e.preventDefault();
+        //         // Simulate enrollment feedback (demo)
+        //         alert('🚀 Enrollment demo: This would redirect to checkout page. Limited seats, grab your bonus now!');
+        //     });
+        // }
+        const demoBtn = document.querySelector('.btn-outline');
+        if (demoBtn) {
+            demoBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('🎥 Watch demo video preview: Master Wiring Harness Design + Full Toolkit showcase. (demo placeholder)');
+            });
+        }
+    </script>
+    <style>
+        .bonus-animated {
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .floating-icon {
+            transition: transform 0.2s ease, color 0.2s;
+        }
+
+        .floating-icon:hover i {
+            transform: scale(1.1);
+            display: inline-block;
+        }
+
+        .btn-outline:hover i {
+            transform: translateX(3px);
+        }
+
+        .btn-primary i {
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(4px);
+        }
+
+        .price-box .new-price {
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes subtlePulse {
+            0% {
+                opacity: 0.9;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .urgent-badge i {
+            margin-right: 8px;
+        }
+
+        /* mobile responsive extra */
+        @media (max-width: 480px) {
+            .price-box h2 {
+                font-size: 1.7rem;
+            }
+
+            .old-price {
+                font-size: 1.3rem;
+            }
+
+            .new-price {
+                font-size: 2.4rem;
+            }
+
+            .bonus-animated {
+                font-size: 0.85rem;
+                padding: 12px;
+            }
+        }
+
+        .trust-badge-mini {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+    </style>
+
+    <!-- FAQ -->
+    <script>
+        document.querySelectorAll(".faq-question").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const item = btn.parentElement;
+
+                // optional: close others
+                document.querySelectorAll(".faq-item").forEach(i => {
+                    if (i !== item) i.classList.remove("active");
+                });
+
+                item.classList.toggle("active");
+            });
+        });
+    </script>
+
+    <!-- Countdown hr -->
+    <script>
+        // set 48 hours from now
+        const endTime = new Date().getTime() + (48 * 60 * 60 * 1000);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = endTime - now;
+
+            if (diff <= 0) {
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+
+</html>

@@ -1773,56 +1773,127 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 18px;
+            align-items: start;
+            /* Stops neighbor from stretching */
         }
 
         /* ===== CARD ===== */
+        /* Module Card Styles */
         .module-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 22px;
-            padding: 22px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            transition: transform 0.25s ease, border-color 0.25s ease;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .module-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(34, 211, 238, 0.35);
-        }
-
-        /* title */
         .module-card h3 {
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin: 0;
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+            color: #eef4ff;
         }
 
-        /* list */
+        /* Arrow indicator */
+        .module-card h3::after {
+            content: "▼";
+            font-size: 12px;
+            color: #d7a629;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        /* Rotate arrow when active */
+        .module-card.active h3::after {
+            transform: rotate(180deg);
+        }
+
+        /* List container - hidden by default */
         .module-card ul {
             margin: 0;
-            padding-left: 0;
+            padding: 0 22px;
             list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.3s ease;
         }
 
+        /* Active state - show content */
+        .module-card.active ul {
+            max-height: 500px;
+            padding: 0 22px 22px 22px;
+        }
+
+        /* List items styling */
         .module-card li {
             position: relative;
             padding-left: 18px;
-            margin: 8px 0;
+            margin: 10px 0;
             font-size: 14px;
             color: #cbd5e1;
             line-height: 1.6;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        /* bullet */
+        /* Animate list items when active */
+        .module-card.active li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation for list items */
+        .module-card.active li:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .module-card.active li:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .module-card.active li:nth-child(3) {
+            transition-delay: 0.15s;
+        }
+
+        .module-card.active li:nth-child(4) {
+            transition-delay: 0.2s;
+        }
+
+        /* Bullet point styling */
         .module-card li::before {
             content: "";
             position: absolute;
             left: 0;
             top: 8px;
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            background: #22d3ee;
+            background: #d7a629;
+            transition: transform 0.2s ease;
+        }
+
+        .module-card.active li:hover::before {
+            transform: scale(1.5);
+        }
+
+        /* Hover effect on card */
+        .module-card:hover {
+            border-color: rgba(215, 166, 41, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .module-card h3:hover {
+            color: #f2cf6a;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -2240,7 +2311,6 @@
         </section>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <!-- Module -->
         <section id="modules" class="section">
             <div class="container-fluid1">
 
@@ -2363,7 +2433,6 @@
 
             </div>
         </section>
-
         <section id="modules1" class="section">
             <div class="container-fluid1">
 
@@ -2620,6 +2689,7 @@
             </div>
         </section>
 
+
         <section id="pricing" style="
     padding:60px 20px;
     background: radial-gradient(circle at top, #0b1628, #050b15);
@@ -2771,6 +2841,24 @@
                         </button>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+
+        <section id="cta">
+            <div class="container-fluid1">
+                <div class="cta-banner">
+                    <h3>Ready to Start Your Career in Automotive Wiring Harness Engineering?</h3>
+                    <p>
+                        Join NUSTECH Academy and gain lifetime access to structured, industry-focused courses.
+                        Whether you’re a student, fresher, or working professional, our programs are designed to
+                        take you from fundamentals to OEM-level expertise with practical, career-oriented training.
+                    </p>
+                    <div class="hero-actions" style="margin-top:0;">
+                        <a class="btn btn-primary" href="#pricing">View Course Plans</a>
+                        <a class="btn btn-secondary" href="#contact">Enroll Now</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -3011,7 +3099,7 @@
 
 
 
-        <div class="container-fluid1 faq" id="faq">
+        <section class="container-fluid1 faq" id="faq">
             <div class="faq-header">
                 <h2>Frequently Asked Questions</h2>
             </div>
@@ -3056,26 +3144,11 @@
                     You will receive the access link via WhatsApp or email after successful payment.
                 </div>
             </div>
-        </div>
-
-
-
-        <section id="cta">
-            <div class="container-fluid1">
-                <div class="cta-banner">
-                    <h3>Ready to Start Your Career in Automotive Wiring Harness Engineering?</h3>
-                    <p>
-                        Join NUSTECH Academy and gain lifetime access to structured, industry-focused courses.
-                        Whether you’re a student, fresher, or working professional, our programs are designed to
-                        take you from fundamentals to OEM-level expertise with practical, career-oriented training.
-                    </p>
-                    <div class="hero-actions" style="margin-top:0;">
-                        <a class="btn btn-primary" href="#pricing">View Course Plans</a>
-                        <a class="btn btn-secondary" href="#contact">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
         </section>
+
+
+
+
 
     </main>
 
@@ -3569,6 +3642,17 @@
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
+    </script>
+
+
+    <!-- All chater dropdown lke faq -->
+    <script>
+        document.querySelectorAll('.module-card').forEach(card => {
+            const heading = card.querySelector('h3');
+            heading.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 
